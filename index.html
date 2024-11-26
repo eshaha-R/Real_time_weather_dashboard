@@ -8,8 +8,17 @@
 </head>
 <body>
   <h1>Weather Dashboard</h1>
-  <button onclick="showWeather()">Show 5-Day Forecast</button>
   
+  <div id="currentWeather">
+    <h2>Weather in Perth</h2>
+    <p id="currentTemperature">Temperature: 20°C</p>
+    <p id="currentWeatherDescription">Weather: clear sky</p>
+    <p id="currentHumidity">Humidity: 57%</p>
+    <p id="currentWindSpeed">Wind Speed: 7.72 m/s</p>
+  </div>
+
+  <button onclick="showWeather()">Show 5-Day Forecast</button>
+
   <div id="weatherContainer" style="display: none;">
     <h2>5-Day Weather Forecast</h2>
     <div id="forecast"></div>
