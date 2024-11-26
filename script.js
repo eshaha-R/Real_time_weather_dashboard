@@ -21,25 +21,33 @@ function displayCurrentWeather() {
 }
 
 async function getWeather(city) {
-  const response = await fetch(`${apiEndpoint}?q=${city}&appid=${apiKey}&units=metric`);
-  const data = await response.json();
+  try {
+    const response = await fetch(`${apiEndpoint}?q=${city}&appid=${apiKey}&units=metric`);
+    const data = await response.json();
 
-  if (data.cod === 200) {
-    displayWeather(data);
-  } else {
-    document.getElementById('weather-info').innerHTML = `<p>City not found. Please try again.</p>`;
+    if (data.cod === 200) {
+      displayWeather(data);
+    } else {
+      document.getElementById('weather-info').innerHTML = `<p>City not found. Please try again.</p>`;
+    }
+  } catch (error) {
+    console.error("Error fetching weather data:", error);
   }
 }
 
 async function getForecast(city) {
-  const response = await fetch(`${forecastEndpoint}?q=${city}&appid=${apiKey}&units=metric`);
-  const data = await response.json();
+  try {
+    const response = await fetch(`${forecastEndpoint}?q=${city}&appid=${apiKey}&units=metric`);
+    const data = await response.json();
 
-  if (data.cod === "200") {
-    displayForecast(data);
-  } else {
-    console.log("Error fetching forecast data:", data);
-    document.getElementById('forecast-info').innerHTML = `<p>Error fetching forecast data: ${data.message}</p>`;
+    if (data.cod === "200") {
+      displayForecast(data);
+    } else {
+      console.log("Error fetching forecast data:", data);
+      document.getElementById('forecast-info').innerHTML = `<p>Error fetching forecast data: ${data.message}</p>`;
+    }
+  } catch (error) {
+    console.error("Error fetching forecast data:", error);
   }
 }
 
@@ -90,7 +98,8 @@ function showPosition(position) {
       } else {
         alert("Unable to fetch weather data for your location.");
       }
-    });
+    })
+    .catch(error => console.error("Error fetching location weather data:", error));
 }
 
 function showError(error) {
