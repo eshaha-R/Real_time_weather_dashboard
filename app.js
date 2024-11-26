@@ -1,3 +1,7 @@
+const apiKey = '85d0c38ff21149c34045a69fcc502092'; // Replace with your OpenWeatherMap API key
+const apiEndpoint = 'https://api.openweathermap.org/data/2.5/weather';
+
+
 async function getForecast(city) {
   document.getElementById('forecast-info').innerHTML = `<p>Loading...</p>`;
   try {
