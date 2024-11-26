@@ -1,35 +1,32 @@
 // Define your OpenWeatherMap API key and endpoint
 const apiKey = '85d0c38ff21149c34045a69fcc502092'; // Replace with your actual OpenWeatherMap API key
-const apiEndpoint = 'https://api.openweathermap.org/data/2.5/weather';
-const forecastEndpoint = 'https://api.openweathermap.org/data/2.5/onecall';
+// Define your OpenWeatherMap API key and endpoint
 
-// Function to fetch current weather data based on a city
+const apiEndpoint = 'https://api.openweathermap.org/data/2.5/weather';
+const forecastEndpoint = 'https://api.openweathermap.org/data/2.5/forecast';
+
+// Function to fetch current weather data
 async function getWeather(city) {
   const response = await fetch(`${apiEndpoint}?q=${city}&appid=${apiKey}&units=metric`);
   const data = await response.json();
 
   if (data.cod === 200) {
     displayWeather(data);
-    getForecast(data.coord.lat, data.coord.lon); // Fetch 7-day forecast using latitude and longitude
   } else {
     document.getElementById('weather-info').innerHTML = `<p>City not found. Please try again.</p>`;
   }
 }
 
-// Function to fetch 7-day forecast data
-async function getForecast(lat, lon) {
-  try {
-    const response = await fetch(`${forecastEndpoint}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
-    const data = await response.json();
-    
-    if (data.cod === 200) {
-      displayForecast(data.daily); // Display 7-day forecast
-    } else {
-      document.getElementById('forecast-info').innerHTML = `<p>Error fetching forecast data.</p>`;
-    }
-  } catch (error) {
-    console.error('Error fetching forecast data:', error);
-    document.getElementById('forecast-info').innerHTML = `<p>Error fetching forecast data. Please try again later.</p>`;
+// Function to fetch the 5-day 3-hour forecast
+async function getForecast(city) {
+  const response = await fetch(`${forecastEndpoint}?q=${city}&appid=${apiKey}&units=metric`);
+  const data = await response.json();
+
+  if (data.cod === "200") {
+    displayForecast(data);
+  } else {
+    console.log("Error fetching forecast data:", data);
+    document.getElementById('forecast-info').innerHTML = `<p>Error fetching forecast data: ${data.message}</p>`;
   }
 }
 
@@ -45,28 +42,24 @@ function displayWeather(data) {
   document.getElementById('weather-info').innerHTML = weatherHTML;
 }
 
-// Function to display the 7-day forecast
-function displayForecast(forecast) {
-  let forecastHTML = `<h2>7-Day Forecast</h2><div class="forecast-container">`;
-
-  forecast.forEach(day => {
-    const date = new Date(day.dt * 1000); // Convert Unix timestamp to Date object
-    const dayName = date.toLocaleDateString('en-GB', { weekday: 'short' });
-    
-    forecastHTML += `
-      <div class="forecast-day">
-        <h3>${dayName}</h3>
-        <p>Temp: ${day.temp.day}°C</p>
-        <p>Weather: ${day.weather[0].description}</p>
-        <p>Humidity: ${day.humidity}%</p>
-        <p>Wind Speed: ${day.wind_speed} m/s</p>
+// Function to display the 5-day forecast data
+function displayForecast(data) {
+  const forecastHTML = data.list.map((forecast) => {
+    return `
+      <div class="forecast">
+        <h3>${new Date(forecast.dt * 1000).toLocaleDateString()}</h3>
+        <p>Time: ${new Date(forecast.dt * 1000).toLocaleTimeString()}</p>
+        <p>Temperature: ${forecast.main.temp}°C</p>
+        <p>Weather: ${forecast.weather[0].description}</p>
+        <p>Humidity: ${forecast.main.humidity}%</p>
+        <p>Wind Speed: ${forecast.wind.speed} m/s</p>
       </div>
     `;
-  });
-
-  forecastHTML += `</div>`;
+  }).join('');
   document.getElementById('forecast-info').innerHTML = forecastHTML;
 }
 
-// Get weather for a default city
-getWeather('Perth'); // Replace with any city of your choice
+// Get weather for a default city (e.g., London)
+const city = 'Perth';  // You can replace this with any city
+getWeather(city);
+getForecast(city);
