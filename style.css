@@ -1,7 +1,7 @@
 /* Base styles */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f4f4f9;
+  background-color: #e0f7fa;  /* Updated background color */
   margin: 0;
   padding: 0;
   display: flex;
@@ -10,9 +10,18 @@ body {
   height: 100vh;
 }
 
-h1 {
-  color: #333;
+.container {
+  max-width: 600px;
+  margin: auto;
   text-align: center;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #00796b;
   margin-bottom: 20px;
 }
 
