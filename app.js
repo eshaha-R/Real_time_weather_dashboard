@@ -14,6 +14,7 @@ async function getWeather(city) {
     getForecast(lat, lon);  // Call function to fetch the 7-day forecast
     displayWeather(data);  // Call function to display the current weather
   } else {
+    console.log(data);  // Log the error if city is not found
     document.getElementById('weather-info').innerHTML = `<p>City not found. Please try again.</p>`;
   }
 }
@@ -32,13 +33,20 @@ function displayWeather(data) {
 
 // Function to fetch 7-day weather forecast using latitude and longitude
 async function getForecast(lat, lon) {
-  const response = await fetch(`${forecastEndpoint}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
-  const data = await response.json();
+  try {
+    const response = await fetch(`${forecastEndpoint}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
+    const data = await response.json();
 
-  if (data.cod === "200") {
-    displayForecast(data.daily);  // Call function to display the 7-day forecast
-  } else {
-    document.getElementById('forecast-info').innerHTML = `<p>Error fetching forecast data.</p>`;
+    console.log(data);  // Log the entire response for debugging
+
+    if (data.cod === "200") {
+      displayForecast(data.daily);  // Call function to display the 7-day forecast
+    } else {
+      document.getElementById('forecast-info').innerHTML = `<p>Error fetching forecast data. API responded with code: ${data.cod}</p>`;
+    }
+  } catch (error) {
+    console.log(error);  // Log any error that occurs during the fetch
+    document.getElementById('forecast-info').innerHTML = `<p>Failed to fetch forecast data. Please try again later.</p>`;
   }
 }
 
@@ -67,4 +75,4 @@ function displayForecast(dailyData) {
 }
 
 // Get weather for a default city
-getWeather('Perth'); // Replace with any city of your choice
+getWeather('London'); // Replace with any city of your choice
