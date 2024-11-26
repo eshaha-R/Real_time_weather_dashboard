@@ -24,6 +24,12 @@
     <button onclick="showWeather()">Show 5-Day Forecast</button>
   </div>
 
+  <div class="container">
+    <input type="text" id="manualLocation" placeholder="Enter city name">
+    <button onclick="getManualLocationWeather()">Get Weather</button>
+    <button onclick="getLocation()">Use My Location</button>
+  </div>
+
   <div class="container" id="weatherContainer" style="display: none;">
     <h2>5-Day Weather Forecast</h2>
     <div id="forecast"></div>
