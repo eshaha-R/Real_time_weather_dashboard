@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather Dashboard</title>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Added font link -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Weather Dashboard</h1>
+  <div class="container">
+    <h1>Weather Dashboard</h1>
+  </div>
   
   <div class="container" id="currentWeather">
     <h2>Weather in Perth</h2>
@@ -18,7 +20,9 @@
     <p id="currentWindSpeed">Wind Speed: 7.72 m/s</p>
   </div>
 
-  <button class="container" onclick="showWeather()">Show 5-Day Forecast</button>
+  <div class="container">
+    <button onclick="showWeather()">Show 5-Day Forecast</button>
+  </div>
 
   <div class="container" id="weatherContainer" style="display: none;">
     <h2>5-Day Weather Forecast</h2>
