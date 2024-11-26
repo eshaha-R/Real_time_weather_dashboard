@@ -82,3 +82,4 @@ function showWeather() {
   const city = 'Perth'; // Default city to show weather
   getForecast(city);
 }
+
