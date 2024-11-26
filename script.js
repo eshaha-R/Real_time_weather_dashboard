@@ -78,54 +78,7 @@ function displayForecast(data) {
   document.getElementById('forecast-info').innerHTML = forecastHTML;
 }
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else {
-    alert("Geolocation is not supported by this browser.");
-  }
-}
-
-function showPosition(position) {
-  const lat = position.coords.latitude;
-  const lon = position.coords.longitude;
-  fetch(`${apiEndpoint}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
-    .then(response => response.json())
-    .then(data => {
-      if (data.cod === 200) {
-        displayWeather(data);
-        getForecast(data.name);
-      } else {
-        alert("Unable to fetch weather data for your location.");
-      }
-    })
-    .catch(error => console.error("Error fetching location weather data:", error));
-}
-
-function showError(error) {
-  switch (error.code) {
-    case error.PERMISSION_DENIED:
-      alert("User denied the request for Geolocation.");
-      break;
-    case error.POSITION_UNAVAILABLE:
-      alert("Location information is unavailable.");
-      break;
-    case error.TIMEOUT:
-      alert("The request to get user location timed out.");
-      break;
-    case error.UNKNOWN_ERROR:
-      alert("An unknown error occurred.");
-      break;
-  }
-}
-
-function getManualLocationWeather() {
-  const city = document.getElementById('manualLocation').value;
-  getWeather(city);
-  getForecast(city);
-}
-
 function showWeather() {
-  const city = document.getElementById('manualLocation').value || 'Perth';
+  const city = 'Perth'; // Default city to show weather
   getForecast(city);
 }
