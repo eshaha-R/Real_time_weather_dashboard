@@ -1,4 +1,3 @@
-// This function runs when the page loads and displays the initial weather in Perth
 window.onload = function() {
   displayCurrentWeather();
 };
@@ -17,7 +16,6 @@ function displayCurrentWeather() {
   document.getElementById("currentWindSpeed").innerText = `Wind Speed: ${currentWeather.windSpeed}`;
 }
 
-// This function is triggered when the button is clicked to show the 5-day forecast
 function showWeather() {
   const weatherData = [
     { time: '11/26/2024 5:30 PM', temp: '20°C', weather: 'clear sky', humidity: '57%', windSpeed: '5.88 m/s' },
@@ -32,7 +30,7 @@ function showWeather() {
 
   weatherData.forEach(day => {
     const weatherCard = document.createElement('div');
-    weatherCard.classList.add('weatherCard');
+    weatherCard.classList.add('col-md-4', 'weatherCard');
     
     weatherCard.innerHTML = `
       <h3>${day.time}</h3>
