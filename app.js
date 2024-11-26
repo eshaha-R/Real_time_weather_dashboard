@@ -1,6 +1,6 @@
+// Define your OpenWeatherMap API key and endpoint
 const apiKey = '85d0c38ff21149c34045a69fcc502092'; // Replace with your OpenWeatherMap API key
 const apiEndpoint = 'https://api.openweathermap.org/data/2.5/weather';
-
 
 // Function to fetch weather data based on a city
 async function getWeather(city) {
@@ -28,4 +28,3 @@ function displayWeather(data) {
 
 // Get weather for a default city
 getWeather('London'); // Replace with any city of your choice
-
