@@ -1,30 +1,29 @@
-// Define your OpenWeatherMap API key and endpoint
-const apiKey = '85d0c38ff21149c34045a69fcc502092'; // Replace with your OpenWeatherMap API key
-const apiEndpoint = 'https://api.openweathermap.org/data/2.5/weather';
-
-// Function to fetch weather data based on a city
-async function getWeather(city) {
-  const response = await fetch(`${apiEndpoint}?q=${city}&appid=${apiKey}&units=metric`);
-  const data = await response.json();
-
-  if (data.cod === 200) {
-    displayWeather(data);
-  } else {
-    document.getElementById('weather-info').innerHTML = `<p>City not found. Please try again.</p>`;
+async function getForecast(city) {
+  document.getElementById('forecast-info').innerHTML = `<p>Loading...</p>`;
+  try {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`);
+    if (!response.ok) {
+      throw new Error('City not found');
+    }
+    const data = await response.json();
+    displayForecast(data);
+  } catch (error) {
+    document.getElementById('forecast-info').innerHTML = `<p>${error.message}. Please try again.</p>`;
   }
 }
 
-// Function to display weather data
-function displayWeather(data) {
-  const weatherHTML = `
-    <h2>Weather in ${data.name}</h2>
-    <p>Temperature: ${data.main.temp}°C</p>
-    <p>Weather: ${data.weather[0].description}</p>
-    <p>Humidity: ${data.main.humidity}%</p>
-    <p>Wind Speed: ${data.wind.speed} m/s</p>
-  `;
-  document.getElementById('weather-info').innerHTML = weatherHTML;
+function displayForecast(data) {
+  let forecastHTML = `<h2>Weather Forecast for ${data.city.name}</h2>`;
+  data.list.forEach(forecast => {
+    forecastHTML += `
+      <div class="forecast-item">
+        <p>${new Date(forecast.dt * 1000).toLocaleDateString()}</p>
+        <p>Temperature: ${forecast.main.temp}°C</p>
+        <p>Weather: ${forecast.weather[0].description}</p>
+      </div>
+    `;
+  });
+  document.getElementById('forecast-info').innerHTML = forecastHTML;
 }
 
-// Get weather for a default city
-getWeather('Bangalore'); // Replace with any city of your choice
+getForecast('London');
