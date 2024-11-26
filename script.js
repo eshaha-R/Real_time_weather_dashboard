@@ -1,7 +1,4 @@
-const apiKey = '85d0c38ff21149c34045a69fcc502092';
-const apiEndpoint = 'https://api.openweathermap.org/data/2.5/weather';
-const forecastEndpoint = 'https://api.openweathermap.org/data/2.5/forecast';
-
+// This function runs when the page loads and displays the initial weather in Perth
 window.onload = function() {
   displayCurrentWeather();
 };
@@ -20,65 +17,34 @@ function displayCurrentWeather() {
   document.getElementById("currentWindSpeed").innerText = `Wind Speed: ${currentWeather.windSpeed}`;
 }
 
-async function getWeather(city) {
-  try {
-    const response = await fetch(`${apiEndpoint}?q=${city}&appid=${apiKey}&units=metric`);
-    const data = await response.json();
-
-    if (data.cod === 200) {
-      displayWeather(data);
-    } else {
-      document.getElementById('weather-info').innerHTML = `<p>City not found. Please try again.</p>`;
-    }
-  } catch (error) {
-    console.error("Error fetching weather data:", error);
-  }
-}
-
-async function getForecast(city) {
-  try {
-    const response = await fetch(`${forecastEndpoint}?q=${city}&appid=${apiKey}&units=metric`);
-    const data = await response.json();
-
-    if (data.cod === "200") {
-      displayForecast(data);
-    } else {
-      console.log("Error fetching forecast data:", data);
-      document.getElementById('forecast-info').innerHTML = `<p>Error fetching forecast data: ${data.message}</p>`;
-    }
-  } catch (error) {
-    console.error("Error fetching forecast data:", error);
-  }
-}
-
-function displayWeather(data) {
-  const weatherHTML = `
-    <h2>Weather in ${data.name}</h2>
-    <p>Temperature: ${data.main.temp}°C</p>
-    <p>Weather: ${data.weather[0].description}</p>
-    <p>Humidity: ${data.main.humidity}%</p>
-    <p>Wind Speed: ${data.wind.speed} m/s</p>
-  `;
-  document.getElementById('weather-info').innerHTML = weatherHTML;
-}
-
-function displayForecast(data) {
-  const forecastHTML = data.list.map((forecast) => {
-    return `
-      <div class="forecast">
-        <h3>${new Date(forecast.dt * 1000).toLocaleDateString()}</h3>
-        <p>Time: ${new Date(forecast.dt * 1000).toLocaleTimeString()}</p>
-        <p>Temperature: ${forecast.main.temp}°C</p>
-        <p>Weather: ${forecast.weather[0].description}</p>
-        <p>Humidity: ${forecast.main.humidity}%</p>
-        <p>Wind Speed: ${forecast.wind.speed} m/s</p>
-      </div>
-    `;
-  }).join('');
-  document.getElementById('forecast-info').innerHTML = forecastHTML;
-}
-
+// This function is triggered when the button is clicked to show the 5-day forecast
 function showWeather() {
-  const city = 'Perth'; // Default city to show weather
-  getForecast(city);
+  const weatherData = [
+    { time: '11/26/2024 5:30 PM', temp: '20°C', weather: 'clear sky', humidity: '57%', windSpeed: '5.88 m/s' },
+    { time: '11/26/2024 8:30 PM', temp: '19.59°C', weather: 'clear sky', humidity: '52%', windSpeed: '6.29 m/s' },
+    { time: '11/26/2024 11:30 PM', temp: '17.4°C', weather: 'clear sky', humidity: '51%', windSpeed: '5.37 m/s' },
+    { time: '11/27/2024 2:30 AM', temp: '14.15°C', weather: 'clear sky', humidity: '58%', windSpeed: '4.86 m/s' },
+    { time: '11/27/2024 5:30 AM', temp: '17.27°C', weather: 'clear sky', humidity: '46%', windSpeed: '5.53 m/s' }
+  ];
+
+  const forecastContainer = document.getElementById('forecast');
+  forecastContainer.innerHTML = ''; // Clear existing content
+
+  weatherData.forEach(day => {
+    const weatherCard = document.createElement('div');
+    weatherCard.classList.add('weatherCard');
+    
+    weatherCard.innerHTML = `
+      <h3>${day.time}</h3>
+      <p>Temperature: ${day.temp}</p>
+      <p>Weather: ${day.weather}</p>
+      <p>Humidity: ${day.humidity}</p>
+      <p>Wind Speed: ${day.windSpeed}</p>
+    `;
+    
+    forecastContainer.appendChild(weatherCard);
+  });
+
+  document.getElementById('weatherContainer').style.display = 'block';
+  document.getElementById('weatherContainer').scrollIntoView({ behavior: 'smooth' });
 }
