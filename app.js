@@ -27,4 +27,4 @@ function displayWeather(data) {
 }
 
 // Get weather for a default city
-getWeather('Perth'); // Replace with any city of your choice
+getWeather('Mumbai'); // Replace with any city of your choice
