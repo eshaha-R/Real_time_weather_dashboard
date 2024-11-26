@@ -69,4 +69,4 @@ function displayForecast(forecast) {
 }
 
 // Get weather for a default city
-getWeather('London'); // Replace with any city of your choice
+getWeather('Perth'); // Replace with any city of your choice
