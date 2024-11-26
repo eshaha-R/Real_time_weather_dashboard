@@ -46,4 +46,5 @@ function showWeather() {
   });
 
   document.getElementById('weatherContainer').style.display = 'block';
+  document.getElementById('weatherContainer').scrollIntoView({ behavior: 'smooth' });
 }
