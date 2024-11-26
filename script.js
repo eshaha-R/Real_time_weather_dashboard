@@ -124,3 +124,8 @@ function getManualLocationWeather() {
   getWeather(city);
   getForecast(city);
 }
+
+function showWeather() {
+  const city = document.getElementById('manualLocation').value || 'Perth';
+  getForecast(city);
+}
