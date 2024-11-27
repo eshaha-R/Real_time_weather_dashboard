@@ -1,57 +1,59 @@
-
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #e0f7fa;  
+  background-color: #f0f4f8;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: flex-start; /* Align content to the start */
-  align-items: center;
   flex-direction: column;
-  min-height: 100vh;
+  align-items: center;
   color: #333;
-  overflow-y: auto; /* Add scroll for overflow content */
+}
+
+nav {
+  width: 100%;
+  background-color: #00796b;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  color: white;
+  margin: 0;
+}
+
+nav input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+nav button {
+  padding: 10px 20px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav button:hover {
+  background-color: #1976D2;
+  transform: scale(1.05);
 }
 
 .container {
   max-width: 600px;
-  width: 100%; /* Ensure full width within the body */
+  width: 100%;
   margin: 20px auto;
   text-align: center;
   padding: 20px;
   background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  color: #00796b;
-  margin-bottom: 20px;
-  font-size: 2em;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #2196F3;
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin-bottom: 20px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-button:hover {
-  background-color: #1976D2;
-  transform: scale(1.05);
-}
-
-#currentWeather, #weatherContainer {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
 }
 
 .weatherCard {
@@ -73,15 +75,15 @@ button:hover {
 }
 
 @media (max-width: 600px) {
-  body {
-    padding: 10px;
+  nav {
+    flex-direction: column;
+  }
+
+  nav input {
+    margin-bottom: 10px;
   }
 
   button {
     width: 100%;
-  }
-
-  #currentWeather, #weatherContainer {
-    padding: 15px;
   }
 }

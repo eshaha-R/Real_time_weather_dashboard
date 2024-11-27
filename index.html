@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
+  <nav>
     <h1>Weather Dashboard</h1>
-  </div>
+    <input type="text" id="cityInput" placeholder="Enter city name">
+    <button onclick="searchWeather()">Search</button>
+  </nav>
   
   <div class="container" id="currentWeather">
-    <h2>Weather in Perth</h2>
+    <h2>Weather in <span id="currentCity">Perth</span></h2>
     <p id="currentTemperature">Temperature: 20°C</p>
     <p id="currentWeatherDescription">Weather: clear sky</p>
     <p id="currentHumidity">Humidity: 57%</p>
