@@ -10,6 +10,7 @@ async function getWeather(city) {
 
   if (data.cod === 200) {
     displayWeather(data);
+    setWeatherBackground(data.weather[0].main);
   } else {
     document.getElementById('weather-info').innerHTML = `<p>City not found. Please try again.</p>`;
   }
@@ -72,6 +73,36 @@ function displayForecast(data) {
   document.getElementById('forecast-info').innerHTML = forecastHTML;
 }
 
+// Function to set background color based on weather condition
+function setWeatherBackground(weather) {
+  const body = document.body;
+  body.classList.remove('sunny', 'cloudy', 'rainy', 'stormy', 'snowy');
+
+  switch (weather.toLowerCase()) {
+    case 'clear':
+    case 'sunny':
+      body.classList.add('sunny');
+      break;
+    case 'clouds':
+    case 'cloudy':
+      body.classList.add('cloudy');
+      break;
+    case 'rain':
+    case 'drizzle':
+      body.classList.add('rainy');
+      break;
+    case 'thunderstorm':
+      body.classList.add('stormy');
+      break;
+    case 'snow':
+      body.classList.add('snowy');
+      break;
+    default:
+      body.style.background = 'linear-gradient(to right, #1e3c72, #2a5298)'; // Default background
+      break;
+  }
+}
+
 // Get weather for a default city (e.g., London)
 const city = 'Perth';  // You can replace this with any city
 getWeather(city);
@@ -86,4 +117,3 @@ document.getElementById('showForecastButton').addEventListener('click', function
   const city = document.getElementById('cityInput').value;
   getForecast(city);
 });
-
