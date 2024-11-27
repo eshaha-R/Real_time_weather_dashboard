@@ -1,8 +1,5 @@
-
 // Define your OpenWeatherMap API key and endpoint
 const apiKey = '85d0c38ff21149c34045a69fcc502092'; // Replace with your actual OpenWeatherMap API key
-// Define your OpenWeatherMap API key and endpoint
-
 const apiEndpoint = 'https://api.openweathermap.org/data/2.5/weather';
 const forecastEndpoint = 'https://api.openweathermap.org/data/2.5/forecast';
 
@@ -33,10 +30,11 @@ async function getForecast(city) {
 
 // Function to display current weather data
 function displayWeather(data) {
+  const weatherIcon = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
   const weatherHTML = `
     <h2>Weather in ${data.name}</h2>
+    <p><img src="${weatherIcon}" alt="Weather icon"> ${data.weather[0].description}</p>
     <p>Temperature: ${data.main.temp}°C</p>
-    <p>Weather: ${data.weather[0].description}</p>
     <p>Humidity: ${data.main.humidity}%</p>
     <p>Wind Speed: ${data.wind.speed} m/s</p>
   `;
@@ -46,12 +44,13 @@ function displayWeather(data) {
 // Function to display the 5-day forecast data
 function displayForecast(data) {
   const forecastHTML = data.list.map((forecast) => {
+    const weatherIcon = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`;
     return `
       <div class="forecast">
         <h3>${new Date(forecast.dt * 1000).toLocaleDateString()}</h3>
         <p>Time: ${new Date(forecast.dt * 1000).toLocaleTimeString()}</p>
+        <p><img src="${weatherIcon}" alt="Weather icon"> ${forecast.weather[0].description}</p>
         <p>Temperature: ${forecast.main.temp}°C</p>
-        <p>Weather: ${forecast.weather[0].description}</p>
         <p>Humidity: ${forecast.main.humidity}%</p>
         <p>Wind Speed: ${forecast.wind.speed} m/s</p>
       </div>
