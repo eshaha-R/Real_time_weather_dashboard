@@ -30,11 +30,11 @@ async function getForecast(city) {
 
 // Function to display current weather data
 function displayWeather(data) {
-  const weatherIcon = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+  const weatherIcon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`; // Larger icon
   const weatherHTML = `
     <div class="weatherCard">
       <h3>Weather in ${data.name}</h3>
-      <p><img src="${weatherIcon}" alt="Weather icon"> ${data.weather[0].description}</p>
+      <p><img src="${weatherIcon}" alt="${data.weather[0].description}" title="${data.weather[0].description}"> ${data.weather[0].description}</p>
       <p><strong>Temperature:</strong> ${data.main.temp}°C</p>
       <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
       <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
@@ -58,11 +58,11 @@ function displayForecast(data) {
   }
 
   const forecastHTML = filteredData.map((forecast) => {
-    const weatherIcon = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`;
+    const weatherIcon = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`; // Larger icon
     return `
       <div class="weatherCard">
         <h3>${new Date(forecast.dt * 1000).toLocaleDateString()}</h3>
-        <p><img src="${weatherIcon}" alt="Weather icon"> ${forecast.weather[0].description}</p>
+        <p><img src="${weatherIcon}" alt="${forecast.weather[0].description}" title="${forecast.weather[0].description}"> ${forecast.weather[0].description}</p>
         <p><strong>Temperature:</strong> ${forecast.main.temp}°C</p>
         <p><strong>Humidity:</strong> ${forecast.main.humidity}%</p>
         <p><strong>Wind Speed:</strong> ${forecast.wind.speed} m/s</p>

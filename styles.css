@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background: linear-gradient(to right, #1e3c72, #2a5298);
+  background: linear-gradient(to right, #1e3c72, #2a5298); /* Default background */
   margin: 0;
   padding: 0;
   display: flex;
@@ -80,6 +80,13 @@ nav button:hover {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.weatherCard img {
+  margin-right: 10px; /* Spacing between icon and text */
 }
 
 .weatherCard:hover {
@@ -122,4 +129,25 @@ nav button:hover {
   button {
     width: 100%;
   }
+}
+
+/* Dynamic Background Colors for Weather Conditions */
+body.sunny {
+  background: linear-gradient(to right, #ffeb3b, #ff9800); /* Sunny */
+}
+
+body.cloudy {
+  background: linear-gradient(to right, #90a4ae, #78909c); /* Cloudy */
+}
+
+body.rainy {
+  background: linear-gradient(to right, #4fc3f7, #0288d1); /* Rainy */
+}
+
+body.stormy {
+  background: linear-gradient(to right, #37474f, #263238); /* Stormy */
+}
+
+body.snowy {
+  background: linear-gradient(to right, #e0f7fa, #b2ebf2); /* Snowy */
 }
