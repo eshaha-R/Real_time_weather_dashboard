@@ -43,12 +43,24 @@ function displayWeather(data) {
 
 // Function to display the 5-day forecast data
 function displayForecast(data) {
-  const forecastHTML = data.list.map((forecast) => {
+  // Filter the data to display only one entry per day
+  const filteredData = [];
+  const dates = new Set();
+  
+  for (const entry of data.list) {
+    const date = new Date(entry.dt * 1000).toLocaleDateString();
+    if (!dates.has(date)) {
+      dates.add(date);
+      filteredData.push(entry);
+    }
+    if (filteredData.length >= 5) break;
+  }
+
+  const forecastHTML = filteredData.map((forecast) => {
     const weatherIcon = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`;
     return `
       <div class="forecast">
         <h3>${new Date(forecast.dt * 1000).toLocaleDateString()}</h3>
-        <p>Time: ${new Date(forecast.dt * 1000).toLocaleTimeString()}</p>
         <p><img src="${weatherIcon}" alt="Weather icon"> ${forecast.weather[0].description}</p>
         <p>Temperature: ${forecast.main.temp}°C</p>
         <p>Humidity: ${forecast.main.humidity}%</p>
