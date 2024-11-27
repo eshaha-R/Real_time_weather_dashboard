@@ -82,5 +82,3 @@ document.getElementById('searchButton').addEventListener('click', function() {
   getWeather(city);
   getForecast(city);
 });
-
-

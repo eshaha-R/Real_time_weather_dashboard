@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #f0f4f8;
+  background: linear-gradient(to right, #6dd5fa, #2980b9);
   margin: 0;
   padding: 0;
   display: flex;
@@ -16,6 +16,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 nav h1 {
@@ -46,12 +47,12 @@ nav button:hover {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 800px;
   width: 100%;
   margin: 20px auto;
   text-align: center;
   padding: 20px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -59,10 +60,15 @@ nav button:hover {
 .weatherCard {
   border: 1px solid #ccc;
   margin-bottom: 10px;
-  padding: 10px;
+  padding: 20px;
   background-color: #f9f9f9;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.weatherCard:hover {
+  transform: scale(1.05);
 }
 
 .weatherCard h3 {
