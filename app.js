@@ -75,13 +75,11 @@ function displayForecast(data) {
 // Get weather for a default city (e.g., London)
 const city = 'Perth';  // You can replace this with any city
 getWeather(city);
-getForecast(city);
 
 // Add event listeners for city search and show forecast button
 document.getElementById('searchButton').addEventListener('click', function() {
   const city = document.getElementById('cityInput').value;
   getWeather(city);
-  getForecast(city);
 });
 
 document.getElementById('showForecastButton').addEventListener('click', function() {
