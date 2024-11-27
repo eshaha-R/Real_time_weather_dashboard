@@ -86,3 +86,4 @@ document.getElementById('showForecastButton').addEventListener('click', function
   const city = document.getElementById('cityInput').value;
   getForecast(city);
 });
+
