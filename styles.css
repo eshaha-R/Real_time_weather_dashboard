@@ -11,7 +11,7 @@ body {
 
 header, footer {
   width: 100%;
-  background-color: #00796b;
+  background: linear-gradient(to right, #00796b, #48a9a6); /* Gradient for header and footer */
   padding: 20px;
   text-align: center;
   color: white;
@@ -20,6 +20,8 @@ header, footer {
 header h1 {
   margin: 0;
   font-size: 2.5em;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif; /* Modern font */
 }
 
 footer p {
@@ -28,7 +30,7 @@ footer p {
 
 nav {
   width: 100%;
-  background-color: #00796b;
+  background: linear-gradient(to right, #00796b, #48a9a6); /* Gradient for nav */
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -39,16 +41,17 @@ nav {
 nav input {
   padding: 10px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px; /* Rounded corners */
   margin-right: 10px;
+  font-size: 16px;
 }
 
 nav button {
   padding: 10px 20px;
-  background-color: #2196F3;
+  background: #2196F3;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px; /* Rounded corners */
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -71,10 +74,10 @@ nav button:hover {
 
 .weatherCard {
   border: 1px solid #ccc;
-  margin-bottom: 10px;
+  margin-bottom: 20px; /* Increased spacing */
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 5px;
+  background-color: #e3f2fd; /* Soft pastel tone */
+  border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
@@ -85,11 +88,26 @@ nav button:hover {
 
 .weatherCard h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px; /* Larger font size */
+  font-weight: bold;
 }
 
 .weatherCard p {
   margin: 5px 0;
+}
+
+/* Call-to-Action Button */
+.container button {
+  padding: 15px 30px; /* Slightly larger */
+  background: #e0f7fa;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.container button:hover {
+  background-color: #b2ebf2;
+  transform: scale(1.05);
 }
 
 @media (max-width: 600px) {
