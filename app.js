@@ -63,3 +63,10 @@ function displayForecast(data) {
 const city = 'Perth';  // You can replace this with any city
 getWeather(city);
 getForecast(city);
+
+// Add event listener for city search input
+document.getElementById('searchButton').addEventListener('click', function() {
+  const city = document.getElementById('cityInput').value;
+  getWeather(city);
+  getForecast(city);
+});

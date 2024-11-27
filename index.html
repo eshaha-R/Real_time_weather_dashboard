@@ -11,26 +11,19 @@
   <nav>
     <h1>Weather Dashboard</h1>
     <input type="text" id="cityInput" placeholder="Enter city name">
-    <button onclick="searchWeather()">Search</button>
+    <button id="searchButton">Search</button>
   </nav>
   
-  <div class="container" id="currentWeather">
-    <h2>Weather in <span id="currentCity">Perth</span></h2>
-    <p id="currentTemperature">Temperature: 20°C</p>
-    <p id="currentWeatherDescription">Weather: clear sky</p>
-    <p id="currentHumidity">Humidity: 57%</p>
-    <p id="currentWindSpeed">Wind Speed: 7.72 m/s</p>
+  <div class="container" id="weather-info">
+    <!-- Weather information will be displayed here -->
   </div>
 
   <div class="container">
     <button onclick="showWeather()">Show 5-Day Forecast</button>
   </div>
 
-  <div class="container" id="weatherContainer" style="display: none;">
-    <h2>5-Day Weather Forecast</h2>
-    <div id="forecast"></div>
-  </div>
+  <div class="container" id="forecast-info"></div>
 
-  <script src="script.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
