@@ -43,10 +43,9 @@ function displayWeather(data) {
 
 // Function to display the 5-day forecast data
 function displayForecast(data) {
-  // Filter the data to display only one entry per day
   const filteredData = [];
   const dates = new Set();
-  
+
   for (const entry of data.list) {
     const date = new Date(entry.dt * 1000).toLocaleDateString();
     if (!dates.has(date)) {
@@ -76,9 +75,14 @@ const city = 'Perth';  // You can replace this with any city
 getWeather(city);
 getForecast(city);
 
-// Add event listener for city search input
+// Add event listeners for city search and show forecast button
 document.getElementById('searchButton').addEventListener('click', function() {
   const city = document.getElementById('cityInput').value;
   getWeather(city);
+  getForecast(city);
+});
+
+document.getElementById('showForecastButton').addEventListener('click', function() {
+  const city = document.getElementById('cityInput').value;
   getForecast(city);
 });
