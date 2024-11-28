@@ -1,4 +1,4 @@
-const apiKey = '85d0c38ff21149c34045a69fcc502092'; // Replace with your actual OpenWeatherMap API key
+const apiKey = '85d0c38ff21149c34045a69fcc502092'; 
 const apiEndpoint = 'https://api.openweathermap.org/data/2.5/weather';
 const forecastEndpoint = 'https://api.openweathermap.org/data/2.5/forecast';
 
