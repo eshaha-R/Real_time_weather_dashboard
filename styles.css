@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background: linear-gradient(to right, #1e3c72, #2a5298); /* Default background */
+  background: linear-gradient(to right, #1e3c72, #2a5298); 
   margin: 0;
   padding: 0;
   display: flex;
@@ -11,7 +11,7 @@ body {
 
 header, footer {
   width: 100%;
-  background: linear-gradient(to right, #00796b, #48a9a6); /* Gradient for header and footer */
+  background: linear-gradient(to right, #00796b, #48a9a6); 
   padding: 20px;
   text-align: center;
   color: white;
@@ -21,7 +21,7 @@ header h1 {
   margin: 0;
   font-size: 2.5em;
   font-weight: bold;
-  font-family: 'Arial', sans-serif; /* Modern font */
+  font-family: 'Arial', sans-serif; 
 }
 
 footer p {
@@ -30,7 +30,7 @@ footer p {
 
 nav {
   width: 100%;
-  background: linear-gradient(to right, #00796b, #48a9a6); /* Gradient for nav */
+  background: linear-gradient(to right, #00796b, #48a9a6);
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -41,7 +41,7 @@ nav {
 nav input {
   padding: 10px;
   border: none;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 10px; 
   margin-right: 10px;
   font-size: 16px;
 }
@@ -51,7 +51,7 @@ nav button {
   background: #2196F3;
   color: white;
   border: none;
-  border-radius: 10px; /* Rounded corners */
+  border-radius: 10px; 
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -74,9 +74,9 @@ nav button:hover {
 
 .weatherCard {
   border: 1px solid #ccc;
-  margin-bottom: 20px; /* Increased spacing */
+  margin-bottom: 20px; 
   padding: 20px;
-  background-color: #e3f2fd; /* Soft pastel tone */
+  background-color: #e3f2fd;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -86,7 +86,7 @@ nav button:hover {
 }
 
 .weatherCard img {
-  margin-right: 10px; /* Spacing between icon and text */
+  margin-right: 10px;
 }
 
 .weatherCard:hover {
@@ -95,7 +95,7 @@ nav button:hover {
 
 .weatherCard h3 {
   margin: 0;
-  font-size: 20px; /* Larger font size */
+  font-size: 20px; 
   font-weight: bold;
 }
 
@@ -103,9 +103,8 @@ nav button:hover {
   margin: 5px 0;
 }
 
-/* Call-to-Action Button */
 .container button {
-  padding: 15px 30px; /* Slightly larger */
+  padding: 15px 30px; 
   background: #e0f7fa;
   border-radius: 10px;
   cursor: pointer;
@@ -131,23 +130,22 @@ nav button:hover {
   }
 }
 
-/* Dynamic Background Colors for Weather Conditions */
 body.sunny {
-  background: linear-gradient(to right, #ffeb3b, #ff9800); /* Sunny */
+  background: linear-gradient(to right, #ffeb3b, #ff9800); 
 }
 
 body.cloudy {
-  background: linear-gradient(to right, #90a4ae, #78909c); /* Cloudy */
+  background: linear-gradient(to right, #90a4ae, #78909c); 
 }
 
 body.rainy {
-  background: linear-gradient(to right, #4fc3f7, #0288d1); /* Rainy */
+  background: linear-gradient(to right, #4fc3f7, #0288d1); 
 }
 
 body.stormy {
-  background: linear-gradient(to right, #37474f, #263238); /* Stormy */
+  background: linear-gradient(to right, #37474f, #263238); 
 }
 
 body.snowy {
-  background: linear-gradient(to right, #e0f7fa, #b2ebf2); /* Snowy */
+  background: linear-gradient(to right, #e0f7fa, #b2ebf2);
 }

@@ -26,7 +26,7 @@ function showWeather() {
   ];
 
   const forecastContainer = document.getElementById('forecast');
-  forecastContainer.innerHTML = ''; // Clear existing content
+  forecastContainer.innerHTML = '';
 
   weatherData.forEach(day => {
     const weatherCard = document.createElement('div');
@@ -51,6 +51,6 @@ function searchWeather() {
   const city = document.getElementById("cityInput").value;
   if (city) {
     document.getElementById("currentCity").innerText = city;
-    // Add logic to fetch weather for the entered city and update the UI
+    
   }
 }

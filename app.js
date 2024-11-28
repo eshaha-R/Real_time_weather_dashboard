@@ -1,9 +1,7 @@
-// Define your OpenWeatherMap API key and endpoint
 const apiKey = '85d0c38ff21149c34045a69fcc502092'; // Replace with your actual OpenWeatherMap API key
 const apiEndpoint = 'https://api.openweathermap.org/data/2.5/weather';
 const forecastEndpoint = 'https://api.openweathermap.org/data/2.5/forecast';
 
-// Function to fetch current weather data
 async function getWeather(city) {
   const response = await fetch(`${apiEndpoint}?q=${city}&appid=${apiKey}&units=metric`);
   const data = await response.json();
@@ -16,7 +14,6 @@ async function getWeather(city) {
   }
 }
 
-// Function to fetch the 5-day 3-hour forecast
 async function getForecast(city) {
   const response = await fetch(`${forecastEndpoint}?q=${city}&appid=${apiKey}&units=metric`);
   const data = await response.json();
@@ -29,7 +26,6 @@ async function getForecast(city) {
   }
 }
 
-// Function to display current weather data
 function displayWeather(data) {
   const weatherIcon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`; // Larger icon
   const weatherHTML = `
@@ -44,7 +40,6 @@ function displayWeather(data) {
   document.getElementById('weather-info').innerHTML = weatherHTML;
 }
 
-// Function to display the 5-day forecast data
 function displayForecast(data) {
   const filteredData = [];
   const dates = new Set();
@@ -73,7 +68,6 @@ function displayForecast(data) {
   document.getElementById('forecast-info').innerHTML = forecastHTML;
 }
 
-// Function to set background color based on weather condition
 function setWeatherBackground(weather) {
   const body = document.body;
   body.classList.remove('sunny', 'cloudy', 'rainy', 'stormy', 'snowy');
@@ -103,11 +97,9 @@ function setWeatherBackground(weather) {
   }
 }
 
-// Get weather for a default city (e.g., London)
-const city = 'Perth';  // You can replace this with any city
+const city = 'Perth'; 
 getWeather(city);
 
-// Add event listeners for city search and show forecast button
 document.getElementById('searchButton').addEventListener('click', function() {
   const city = document.getElementById('cityInput').value;
   getWeather(city);
